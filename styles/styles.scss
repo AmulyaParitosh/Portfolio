@@ -21,6 +21,23 @@
     --box-shadow-1: 0 3px 15px rgba(0,0,0,.3);
     --default-transition: all .4s ease-in-out;
 }
+@keyframes translateXAnim {
+    0%{
+        transform: translateX(-100%) scaleX(1)
+    }
+    100%{
+        transform: translateX(0%) scaleX(1)
+    }
+}
+
+@keyframes translateYAnim {
+    0%{
+        transform: translateY(-100%) scaleY(1)
+    }
+    100%{
+        transform: translateY(0%) scaleY(1)
+    }
+}
 
 body{
 	background-color: var(--color-primary);
@@ -90,15 +107,7 @@ section{
 
 .active{
     display: block;
-    animation: scaleAnim .75s ease-in-out;
-    @keyframes scaleAnim {
-        0%{
-            transform: translateY(-100%) scaleY(1)
-        }
-        100%{
-            transform: translateY(0%) scaleY(1)
-        }
-    }
+    animation: translateYAnim .75s ease-in-out;
 }
 
 .controls{
@@ -156,15 +165,7 @@ section{
             top: 0;
             z-index: -1;
             clip-path: polygon(0 0, 46% 0, 79% 100%, 0% 100%);
-            animation: imgShapAnim .85s ease-in-out;
-                @keyframes imgShapAnim {
-                    0%{
-                        transform: translateX(-100%) scaleX(1)
-                    }
-                    100%{
-                        transform: translateX(0%) scaleX(1)
-                    }
-                }
+            animation: translateXAnim .85s ease-in-out;
         }
         .image {
             // border-radius: var(--br-sm-2);
@@ -182,15 +183,7 @@ section{
                 &:hover{
                     filter: grayscale(0);
                 }
-                animation: imgAnim 1.15s ease-in-out;
-                @keyframes imgAnim {
-                    0%{
-                        transform: translateX(-100%) scaleX(1)
-                    }
-                    100%{
-                        transform: translateX(0%) scaleX(1)
-                    }
-                }
+                animation: translateXAnim 1.15s ease-in-out;
             }
         }
     }
