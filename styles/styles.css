@@ -19,6 +19,7 @@
   --color-grey-6: #12181b;
   --br-sm-2: 14px;
   --box-shadow-1: 0 3px 15px rgba(0,0,0,.3);
+  --default-transition: all .4s ease-in-out;
 }
 
 body {
@@ -26,7 +27,7 @@ body {
   font-family: "Poppins", sans-serif;
   font-size: 1.1rem;
   color: var(--color-white);
-  transition: all 0.4s ease-in-out;
+  transition: var(--default-transition);
 }
 
 a {
@@ -53,7 +54,7 @@ section {
 
 .section {
   transform: translateY(100%) scale(0);
-  transition: all 0.4s ease-in-out;
+  transition: var(--default-transition);
   background-color: var(--color-primary);
 }
 
@@ -65,21 +66,38 @@ section {
 .sec2 {
   display: none;
   transform: translateY(0) scale(1);
+  background-color: rgb(216, 160, 96);
 }
 
 .sec3 {
   display: none;
   transform: translateY(0) scale(1);
+  background-color: rgb(119, 178, 118);
 }
 
 .sec4 {
   display: none;
   transform: translateY(0) scale(1);
+  background-color: rgb(43, 177, 226);
 }
 
 .sec5 {
   display: none;
   transform: translateY(0) scale(1);
+  background-color: rgb(229, 133, 112);
+}
+
+.active {
+  display: block;
+  animation: scaleAnim 0.75s ease-in-out;
+}
+@keyframes scaleAnim {
+  0% {
+    transform: translateY(-100%) scaleY(1);
+  }
+  100% {
+    transform: translateY(0%) scaleY(1);
+  }
 }
 
 .controls {
@@ -95,7 +113,7 @@ section {
 }
 .controls .active-btn {
   background-color: var(--color-secondary) !important;
-  transition: all 0.4s ease-in-out;
+  transition: var(--default-transition);
 }
 .controls .active-btn i {
   color: var(--color-white) !important;
@@ -117,4 +135,78 @@ section {
   font-size: 1.2rem;
   color: var(--color-grey-2);
   pointer-events: none;
+}
+
+.header-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  min-height: 100vh;
+}
+.header-content .left-header {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.header-content .left-header .header-shape {
+  transition: var(--default-transition);
+  width: 65%;
+  height: 100%;
+  background-color: var(--color-secondary);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  -webkit-clip-path: polygon(0 0, 46% 0, 79% 100%, 0% 100%);
+          clip-path: polygon(0 0, 46% 0, 79% 100%, 0% 100%);
+  animation: imgShapAnim 0.85s ease-in-out;
+}
+@keyframes imgShapAnim {
+  0% {
+    transform: translateX(-100%) scaleX(1);
+  }
+  100% {
+    transform: translateX(0%) scaleX(1);
+  }
+}
+.header-content .left-header .image {
+  height: 90%;
+  width: 68%;
+  margin-left: 4rem;
+  transition: var(--default-transition);
+}
+.header-content .left-header .image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: var(--default-transition);
+  filter: grayscale(100%);
+  animation: imgAnim 1.15s ease-in-out;
+}
+.header-content .left-header .image img:hover {
+  filter: grayscale(0);
+}
+@keyframes imgAnim {
+  0% {
+    transform: translateX(-100%) scaleX(1);
+  }
+  100% {
+    transform: translateX(0%) scaleX(1);
+  }
+}
+.header-content .right-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 18rem;
+}
+.header-content .right-header .name {
+  font-size: 3rem;
+}
+.header-content .right-header .name span {
+  color: var(--color-secondary);
+}
+.header-content .right-header p {
+  margin: 1.5rem 0;
+  line-height: 2rem;
 }/*# sourceMappingURL=styles.css.map */
